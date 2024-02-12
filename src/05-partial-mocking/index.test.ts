@@ -10,7 +10,7 @@ jest.mock('./index', () => {
     mockOne: jest.fn(),
     mockTwo: jest.fn(),
     mockThree: jest.fn(),
-  }
+  };
 });
 
 describe('partial mocking', () => {
