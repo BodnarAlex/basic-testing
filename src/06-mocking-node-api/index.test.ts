@@ -4,9 +4,9 @@ import path from 'path';
 import fsPromises from 'fs/promises';
 import { readFileAsynchronously, doStuffByTimeout, doStuffByInterval } from '.';
 
-const fileName = "test.txt";
-jest.mock("fs");
-jest.mock("fs/promises");
+const fileName = 'test.txt';
+jest.mock('fs');
+jest.mock('fs/promises');
 
 describe('doStuffByTimeout', () => {
   beforeAll(() => {

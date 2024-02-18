@@ -36,7 +36,7 @@ describe('BankAccount', () => {
   test('should deposit money', () => {
     const newSumm = 500;
     const myAccount = getBankAccount(initialBalance);
-    let newBalance = newSumm + initialBalance;
+    const newBalance = newSumm + initialBalance;
 
     expect(myAccount.deposit(newSumm).getBalance()).toBe(newBalance);
   });
@@ -44,7 +44,7 @@ describe('BankAccount', () => {
   test('should withdraw money', () => {
     const withdraw = 500;
     const myAccount = getBankAccount(initialBalance);
-    let newBalance = initialBalance - withdraw;
+    const newBalance = initialBalance - withdraw;
 
     expect(myAccount.withdraw(withdraw).getBalance()).toBe(newBalance);
   });
@@ -54,16 +54,18 @@ describe('BankAccount', () => {
     const tranf = 500;
     const myAccount = getBankAccount(initialBalance);
     const otherAccount = getBankAccount(initialOther);
-    let newMyBalance = initialBalance + tranf;
-    let newOtherBalance = initialOther - tranf;
+    const newMyBalance = initialBalance + tranf;
+    const newOtherBalance = initialOther - tranf;
 
-    expect(otherAccount.transfer(tranf, myAccount).getBalance()).toBe(newOtherBalance);
+    expect(otherAccount.transfer(tranf, myAccount).getBalance()).toBe(
+      newOtherBalance,
+    );
     expect(myAccount.getBalance()).toBe(newMyBalance);
   });
 
   test('fetchBalance should return number in case if request did not failed', async () => {
     const myAccount = getBankAccount(initialBalance);
-    jest.spyOn(lodash, "random").mockReturnValue(initialBalance);
+    jest.spyOn(lodash, 'random').mockReturnValue(initialBalance);
 
     await expect(myAccount.fetchBalance()).resolves.toBe(initialBalance);
   });
@@ -71,7 +73,7 @@ describe('BankAccount', () => {
   test('should set new balance if fetchBalance returned number', async () => {
     const myAccount = getBankAccount(initialBalance);
     const newBalance = 5000;
-    jest.spyOn(myAccount, "fetchBalance").mockResolvedValue(newBalance);
+    jest.spyOn(myAccount, 'fetchBalance').mockResolvedValue(newBalance);
 
     await myAccount.synchronizeBalance();
     expect(myAccount.getBalance()).toBe(newBalance);
@@ -79,8 +81,10 @@ describe('BankAccount', () => {
 
   test('should throw SynchronizationFailedError if fetchBalance returned null', async () => {
     const myAccount = getBankAccount(initialBalance);
-    jest.spyOn(myAccount, "fetchBalance").mockResolvedValue(null);
+    jest.spyOn(myAccount, 'fetchBalance').mockResolvedValue(null);
 
-    expect(myAccount.synchronizeBalance.bind(myAccount)).rejects.toThrowError(SynchronizationFailedError);
+    expect(myAccount.synchronizeBalance.bind(myAccount)).rejects.toThrowError(
+      SynchronizationFailedError,
+    );
   });
 });

@@ -9,7 +9,7 @@ jest.mock('axios', () => ({
   get: jest.fn().mockResolvedValue({ data: 'response' }),
   create: function () {
     return {
-      get: this.get.mockReturnValue({ data: 'response' })
+      get: this.get.mockReturnValue({ data: 'response' }),
     };
   },
 }));

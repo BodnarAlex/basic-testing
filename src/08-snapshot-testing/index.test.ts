@@ -4,21 +4,20 @@ import { generateLinkedList } from './index';
 describe('generateLinkedList', () => {
   // Check match by expect(...).toStrictEqual(...)
   test('should generate linked list from values 1', () => {
-
-    const array = ["roots", "trunk", "branches"];
+    const array = ['roots', 'trunk', 'branches'];
 
     const checkTest = {
-      value: "roots",
+      value: 'roots',
       next: {
-        value: "trunk",
+        value: 'trunk',
         next: {
-          value: "branches",
+          value: 'branches',
           next: {
             value: null,
-            next: null
-          }
-        }
-      }
+            next: null,
+          },
+        },
+      },
     };
 
     expect(generateLinkedList(array)).toStrictEqual(checkTest);
@@ -26,7 +25,7 @@ describe('generateLinkedList', () => {
 
   // Check match by comparison with snapshot
   test('should generate linked list from values 2', () => {
-    const array = ["head", "neck", "body", "tail"];
+    const array = ['head', 'neck', 'body', 'tail'];
     expect(generateLinkedList(array)).toMatchSnapshot();
   });
 });

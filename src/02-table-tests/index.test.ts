@@ -33,10 +33,10 @@ const testCases = [
   { a: 20, b: 13, action: 'count', expected: null },
   { a: 13, b: 13, action: 'work', expected: null },
 
-  { a: "1", b: 2, action: Action.Add, expected: null },
-  { a: 2, b: "1", action: Action.Multiply, expected: null },
-  { a: "2", b: [1], action: Action.Divide, expected: null },
-  { a: "err", b: "err", action: Action.Exponentiate, expected: null },
+  { a: '1', b: 2, action: Action.Add, expected: null },
+  { a: 2, b: '1', action: Action.Multiply, expected: null },
+  { a: '2', b: [1], action: Action.Divide, expected: null },
+  { a: 'err', b: 'err', action: Action.Exponentiate, expected: null },
 ];
 
 describe('simpleCalculator', () => {
@@ -46,6 +46,6 @@ describe('simpleCalculator', () => {
     'accepts arguments: a, b and action - return expected',
     ({ a, b, action, expected }) => {
       expect(simpleCalculator({ a, b, action })).toBe(expected);
-    }
-  )
+    },
+  );
 });
