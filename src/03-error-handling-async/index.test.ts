@@ -10,7 +10,7 @@ import {
 describe('resolveValue', () => {
   test('should resolve provided value', async () => {
     const data = '15';
-    expect(resolveValue(data)).resolves.toBe(data);
+    await expect(resolveValue(data)).resolves.toBe(data);
     const value = [15];
     await expect(resolveValue(value)).resolves.toBe(value);
   });
@@ -19,22 +19,22 @@ describe('resolveValue', () => {
 describe('throwError', () => {
   test('should throw error with provided message', () => {
     const data = 'Custom error: incorrect path';
-    expect(() => throwError(data)).toThrowError(data);
+    expect(() => throwError(data)).toThrow(data);
   });
 
   test('should throw error with default message if message is not provided', () => {
-    expect(() => throwError()).toThrowError('Oops!');
+    expect(() => throwError()).toThrow('Oops!');
   });
 });
 
 describe('throwCustomError', () => {
   test('should throw custom error', () => {
-    expect(() => throwCustomError()).toThrowError(MyAwesomeError);
+    expect(() => throwCustomError()).toThrow(MyAwesomeError);
   });
 });
 
 describe('rejectCustomError', () => {
   test('should reject custom error', async () => {
-    expect(() => rejectCustomError()).rejects.toThrowError(MyAwesomeError);
+    await expect(() => rejectCustomError()).rejects.toThrow(MyAwesomeError);
   });
 });
